@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+//prototipo de funcion
+void cuadrado(int*,int);
+
+//Punteros o Apuntadores
+
+int main(void) {
+
+  //Declaracion de variable entera
+  int numero;
+
+  //Declaracion de un puntero a un entero
+  int * punteroNumero;
+
+  //Asignacion de una direccion de memoria a un puntero
+  punteroNumero = &numero;
+
+  //Accedemos a la direccion de memoria y le asignamos un valor entero
+  *punteroNumero = 10;
+
+  //Llamado a la funcion con una referencia como parametro
+  cuadrado(&numero,8);
+  
+  printf("Direccion Entero: %p\n", &numero);
+  printf("Contenido: %p\n",punteroNumero);
+  printf("Numero: %d\n",numero);
+
+  return 0;
+}
+
+//Implementacion de la funcion
+void cuadrado(int* total, int valor){
+  //asignamos un valor en la direccion de memoria recibida
+  *total = valor * valor;
+}
