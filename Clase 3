@@ -1,0 +1,94 @@
+#include <stdio.h>
+
+//MACROS
+//#define NOMBRE_MACRO valor_macro
+#if 1
+  #define MAYOR_EDAD 18
+  #define ADOLESCENTE 14
+#else
+  #define MAYOR_EDAD 21
+  #define ADOLESCENTE 15
+#endif
+
+#define PI 3.1416
+
+//#define SALUDO 1
+//#define DESPEDIDA 2
+//#define SALIR 3
+
+enum {SALUDO = 1, DESPEDIDA, SALIR};
+
+//ESTRUCTURAS DE CONTROL
+
+int main(void) {
+
+  //Definicion de variables
+
+  short int edad;
+  int opcion;
+
+  //Estructuras de Selección
+
+  /* IF, Sintaxis
+    if(condición){
+      //Codigo a ejecutar si se cumple la condición
+    }else{
+    
+    }
+  */
+  printf("Ingrese su edad:\n");
+
+  //Solicitamos al usuario que ingrese el valor de su edad
+  scanf("%hi", &edad);
+
+  //IF
+  if(edad >= MAYOR_EDAD){
+    printf("Es mayor de edad\n");
+  }else if(edad >= ADOLESCENTE){
+    printf("Es adolescente\n");
+  }else {
+    printf("Es menor de edad\n");
+  }
+
+  /*SWITCH, sintaxis
+    switch(expression entera){
+      case (valor1):
+        //Codigo valor1
+        break;
+      case (valor2):
+        //Codigo valor2
+        break;
+          ....
+      case (valorN):
+        //Codigo valorN
+        break;
+      default:
+        //Codigo por defecto
+        break;
+    }
+  */
+
+  printf("\nIngrese una opcion:\n\n1. Saludo\n2. Despedida\n3. Salir\n\n");
+
+  scanf("%d",&opcion);
+
+  switch(opcion){
+    case SALUDO:
+      printf("Hola Como esta?\n");
+      break;
+    case DESPEDIDA:
+      printf("Hasta luego, vuelva pronto!\n");
+      break;
+    case SALIR:
+      printf("Saliendo!!!\n");
+      break;
+    default:
+      printf("Ingresó una opción no valida\n");
+      break;
+  }
+
+  //Imprime la referencia a la variable (Su direccion en la memoria)
+  printf("\nDireccion: %p\n", &edad);
+
+  return 0;
+}
