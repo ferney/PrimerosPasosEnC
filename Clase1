@@ -1,0 +1,71 @@
+// Esto es un comentario de una linea
+/*
+Esto es
+un comentario
+de varias lineas
+*/
+
+//Headers o Cabeceras
+#include <stdio.h>
+
+//Variables Global
+/*Sintaxis
+  extern tipoDato nombreVariable;
+*/
+extern char variableGlobal;
+
+//Variable 
+int variable = 0;
+
+//Funcion main o metodo main
+int main() {
+  //declaraciones de variables
+  /*Sintaxis
+    tipoDato nombreVariable;
+  */
+  char miCaracter;
+  short int enteroCorto;
+  int entero;
+  long int enteroLargo;
+  float miFlotante;
+  double miDouble;
+  
+  //Tipos de datos
+  /*
+    char      : Caracteres, 'A', 1 Byte
+    short int : Numeros esteros, 2 Bytes
+    int       : Numeros enteros, 4 Bytes
+    long int  : Numeros enteros, 8 Bytes
+    float     : Numeros decimales, 4 Bytes, 6 Decimales
+    double    : Numeros decimales, 8 Bytes, 10 Decimales
+  */
+
+  //Instanciar o Inicializar valiables
+  miCaracter = 'A';
+  enteroCorto = 0;
+  entero = 0;
+  enteroLargo = 0;
+  miFlotante = 0.000000;
+  miDouble = 0.0000000000;
+
+  //Asignamos un valor a la variable definida por fuera del main
+  variable = 9;
+
+  //Body, cuerpo del programa
+
+  //Imprime
+  printf("Tamanio en Bytes: %li\n", sizeof(double));
+
+
+  printf ("Characters: %c %c \n", 'a', 65);
+  printf ("Decimals: %d %ld\n", 1977, 650000L);
+  printf ("Preceding with blanks: %10d \n", 1977);
+  printf ("Preceding with zeros: %010d \n", 1977);
+  printf ("Some different radices: %d %x %o %#x %#o \n", 100, 100, 100, 100, 100);
+  printf ("floats: %4.2f %+.0e %E \n", 3.1416, 3.1416, 3.1416);
+  printf ("Width trick: %*d \n", 5, 10);
+  printf ("%s \n", "A string");
+  
+  //Return
+  return 0;
+}
