@@ -1,0 +1,115 @@
+#######################################################
+main.c
+#######################################################
+
+#include <stdio.h>
+#include "operaciones.h"
+
+//Funciones
+//prototipos de funciones
+// tipoDato nombreFuncion(tipo Param);
+void saludo(int);
+
+int main(void) {
+  //Declaracion de variables
+  int suma, resta, multiplicacion, division;
+  int valorA,valorB;
+  //Llamado a una funcion
+  //nombreFuncion(valores parametros);
+
+  //Solicito al usuario 2 valores enteros
+  printf("Ingrese 2 valores enteros (A B): ");
+  scanf("%d %d", &valorA, &valorB);
+
+  //LLamado a las fuciones
+  suma = sumar(valorA, valorB);
+  resta = restar(valorA, valorB);
+  multiplicacion = multiplicar(valorA, valorB); 
+  division = dividir(valorA, valorB);
+
+  printf("La suma es: %d\n",suma);
+  printf("La resta es: %d\n",resta);
+  printf("La multiplicacion es: %d\n",multiplicacion);
+  printf("La division es: %d\n",division);
+  printf("La potencia es: %.2f\n",potencia((double)valorA,(double)valorB));
+  
+  
+  saludo(6);
+
+  return 0;
+}
+
+
+//Sintaxis
+/*
+  tipoDato nombreFuncion(param1,...,paramN){
+    //Codigo
+    return(tipoDato);
+  }
+*/
+
+//Implementacion de una funcion recursiva
+void saludo(int hola){
+  printf("Hola Mundo: %d\n",hola);
+  if(hola > 0){
+   saludo(hola-1);//Funcion Recursiva
+  }
+}
+
+
+
+#######################################################
+operaciones.c
+###################################################
+//importamos el .h
+#include "operaciones.h"
+
+//Implementacion de la logica de las funciones
+
+int sumar(int numeroA,int numeroB){
+  int total = numeroA + numeroB;
+  return total;
+}
+
+int restar(int numeroA,int numeroB){
+  int total = numeroA - numeroB;
+  return total;
+}
+
+int multiplicar(int numeroA,int numeroB){
+  int total = numeroA * numeroB;
+  return total;
+}
+
+int dividir(int numeroA,int numeroB){
+  //Se asume que numeroB es distinto de 0
+  int total = numeroA / numeroB;
+  return total;
+}
+
+double potencia(double base, double exponente){
+  double total = pow(base,exponente);
+  return total;
+}
+
+#######################################################
+operaciones.h
+#######################################################
+#ifndef OPERACIONES_H
+#define OPERACIONES_H
+
+//Importar Librerias
+#include <math.h>
+//Definiciones de tipo de datos
+//Defininicion de estructuras
+//Creacion de Macros
+//Declaracion de variables globales
+
+//Prototipos de funciones
+int sumar(int,int);
+int restar(int,int);
+int multiplicar(int,int);
+int dividir(int,int);
+double potencia(double,double);
+
+#endif
