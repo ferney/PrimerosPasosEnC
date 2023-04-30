@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAMANIO_VECTOR 4
+
+//Arreglos
+
+int main(void) {
+  //Vectores
+  /*Sintaxis
+    tipoDato nombreVector[Tamaño];
+  */
+
+  //Declaracion de un vector
+  char saludo[TAMANIO_VECTOR];
+  int * numeros;
+
+  //Reservo 40 Bytes de memoria para 10 int
+  numeros = (int*) malloc(sizeof(int)*10);
+
+  //Asignamos elementos a las posiciones del vector
+  saludo[0] = 'H';
+  saludo[1] = 'O';
+  saludo[2] = 'L';
+  saludo[3] = 'A';
+
+  
+  //Recorremos el vector con un ciclo y mostramos cada elemento
+  for(int posicion = 0; posicion < TAMANIO_VECTOR; posicion++){
+    printf("%c",saludo[posicion]);
+  }
+
+  //Obtiene la cantidad de elementos de un vector
+  printf("\nTamanio: %li\n", sizeof(saludo)/sizeof(saludo[0]));
+
+  //Libero la memoria reservasa
+  free(numeros);
+  
+  return 0;
+}
