@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+//Ciclos
+
+int main(void) {
+
+  //Definicion de variables
+  int contadorWhile;
+  int contadorDoWhile;
+
+  //Ciclo for
+  /*Sintaxis
+    for(init; condicion; incremento){
+      //Codigo a iterar
+    }
+  */
+
+  for(int contadorFor =0; contadorFor < 5; contadorFor++){
+    printf("Iteracion for: %d\n",contadorFor);
+  }
+
+  //Ciclo while
+  /*Sintaxis
+    while(condicion){
+    
+    }
+  */
+
+  contadorWhile =0;
+  
+  while(contadorWhile < 20){
+
+    //condicional
+    if( (contadorWhile % 2) == 0){//Verifico los multiplos de 2
+      printf("Iteracion while: %d\n",contadorWhile);
+    }
+
+    //Condicional
+    if(contadorWhile>15){
+      //Rompo la ejecucion del ciclo si el contador
+      //es mayor que 15
+      break;
+    }
+    //Incremento la variable contadora 
+    contadorWhile++;
+  }
+
+  //Ciclo Do-While
+  /*Sintaxis
+    do{
+      //Codigo a iterar
+    }while(condicion);
+  */
+
+  contadorDoWhile = 0;
+  
+  do{
+    printf("Iteracion do-while: %d\n",contadorDoWhile);
+    //Incremento la variable contadora
+    contadorDoWhile++;
+  }while(contadorDoWhile < 5);
+
+  return 0;
+}
