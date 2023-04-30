@@ -1,0 +1,81 @@
+#include <stdio.h>
+
+//Operadores
+
+int main(void) {
+
+  //Declaracion de variables
+  int total;
+  short int booleano;
+  char resultado;
+
+  /*Operadores Aritmeticos
+    +    Suma
+    -    Resta
+    *    Multiplicacion
+    /    Division
+    %    Modulo o Residuo
+    ()   parentesis
+
+    Orden de prelacion:
+    ()
+    *
+    /
+    %
+    +
+    -
+  */
+  
+  total = 6+7*9-5;
+
+  /*Operadores de Asignacion
+    = Asignacion
+    *= Asignacion con multiplicacion
+    /= Asignacion con division
+    += Asignacion con suma
+    -= Asignacion con resta
+    %= Asignacion con modulo
+    ++ operador de incremento
+    -- operador de decremento
+
+    Operador Ternario
+    variable = (condicion) ? valorVerdad : valorFalso;
+  */
+  resultado = (4==3 || 5>7) ? 'A' : 'B';
+
+  total += 6;
+
+  printf("Total: %d\n",total);
+  printf("Resultado: %c\n",resultado);
+
+  /* Operadores Lógicos
+      1    True, Verdad
+      0    False, Falso
+      ==   igual
+      !    NOT
+      !=   diferente
+      <    menor que
+      >    mayor que
+      <=   menor o igual
+      >=   mator o igual
+      ||   OR
+      &&   AND
+  */
+
+  booleano = 17 > 9 && 6>4;
+
+  printf("Bool: %hi\n", booleano);
+
+  /* Operadores Bitwise
+    Son operadores que modifican las variables bit a bit.
+  
+    &   AND bit a bit
+    |   OR  bit a bit
+    ^   XOR bit a bit
+    ~   NOT bit a bit
+    <<  SHIFT a la izquieda
+    >>  SHIFT a la derecha
+  */
+
+  return 0;
+}
