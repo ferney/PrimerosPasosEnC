@@ -1,0 +1,140 @@
+######
+main.c
+######
+#include <stdio.h> //proporciona funciones para entrada y salida de datos
+#include <stdlib.h>//funciones para la asignación y liberación de memoria
+#include "miLibreria.h"//librería propia creada para ser usada por otros archivos de código
+
+int main() {
+    // Inicializar la huerta
+    Huerta miHuerta;
+    initHuerta(&miHuerta);
+    //iniciamos mostrando el menú
+    int c = 0;//variavle para gardar la pocición de un dato
+    char *t1;    //variable para almacenar un texto
+    int opcion = 0; //variable para guardar la opción ingresada por el usuario
+    while (opcion != 4) {
+        // Mostrar menú
+        printf("Huerta Escolar\n");
+        printf("1. Agregar planta\n");
+        printf("2. Regar planta\n");
+        printf("3. Ver estado de la huerta\n");
+        printf("4. Salir\n");
+
+        // Obtener/capturar la opción ingresada por el usuario
+        printf("Seleccione una opción: ");
+        scanf("%d", &opcion);
+        //según la selección es el caso correspondiente
+        switch (opcion) {
+            case 1:
+                agregarPlanta(&miHuerta);
+                break;
+            case 2:
+                regarPlanta(&miHuerta);
+                break;
+            case 3://para ver el listado de plantas 
+                printf("\n");
+                printf("Id\t\tNombre\t\tTipo\t\t\t\tHumedad ¿Riego?\n");
+                printf("----------------------------------------------\n");
+                for (int i = 0; i < miHuerta.numPlantas; i++) {
+                  c = i+1;//para que el usuario vea un numero coherente y no el id del arrray
+                  
+                    printf( "%d\t\t%s\t\t%s\t\t\t\t%d\t\t%s\n", 
+                      c,
+        miHuerta.plantas[i].nombre, 
+        miHuerta.plantas[i].tipo, 
+        miHuerta.plantas[i].humedad,
+        t1 = miHuerta.plantas[i].humedad <= 50 ? "si" : "no",
+                  c=0 //ponemos en 0 la pocición para adjuntar otra nuev apor ciclo
+                );}
+                printf("\n");
+                break;
+            case 4:
+                break;
+            default:
+                printf("Opción inválida. Intente de nuevo.\n");
+        }
+    }
+
+    return 0;
+}
+
+
+########
+miLibreria.c
+########
+#include "miLibreria.h"
+#include <stdio.h>
+#include <stdlib.h>
+//inicializar Huerta 
+void initHuerta(Huerta *huerta) {
+  //iniciamos el numero d eplantas en 0
+    huerta->numPlantas = 0;
+}
+//metodo que permite agrgar una planta al array
+void agregarPlanta(Huerta *huerta) {
+  //si estaleno el array nos aborta el codigo
+    if (huerta->numPlantas == MAX_PLANTAS) {
+        printf("La huerta está llena. No se pueden agregar más plantas.\n");
+        return;
+    }
+    //si el array no esta lleno pide los datos d elas plantas
+    printf("Ingrese el nombre de la planta: ");
+    scanf("%s", huerta->plantas[huerta->numPlantas].nombre);
+    printf("Ingrese el tipo de la planta: ");
+    scanf("%s", huerta->plantas[huerta->numPlantas].tipo);
+    printf("Ingrese la humedad actual de la planta (0-100): ");
+    scanf("%d", &huerta->plantas[huerta->numPlantas].humedad);
+
+    // Añadir la planta a la huerta
+    huerta->numPlantas++;
+    printf("La planta ha sido agregada correctamente.\n");
+}
+//metodo que nos permite regar las plantas
+void regarPlanta(Huerta *huerta) {
+  //si el arreglo esta vacio nos aborta
+    if (huerta->numPlantas == 0)
+      {
+printf("La huerta está vacía. No hay plantas para regar.\n");
+return;
+}
+//si el array no esta vacío, pide el indice de cual planta vas a regar
+int index;
+printf("Ingrese el número de la planta que desea regar (1-%d): ", huerta->numPlantas);
+scanf("%d", &index);
+index--;
+
+// Validar el índice si existe en el array
+if (index < 0 || index >= huerta->numPlantas) {
+printf("Índice inválido. Intente de nuevo.\n");
+return;
+}
+// si todo sale bien se ejecuta el riego d e la palnta adicionando 10 a la humedad
+huerta->plantas[index].humedad += 10;
+  //si el riego supera 100, este cógigo lo pone en 100 que es el maximo
+if (huerta->plantas[index].humedad > 100) {
+huerta->plantas[index].humedad = 100;
+}
+printf("La planta ha sido regada correctamente.\n");
+}
+
+#######
+miLibreria.h
+#######
+#define MAX_PLANTAS 10 
+//generamos la estructura para cada planta
+typedef struct {
+    char nombre[50];
+    char tipo[50];
+    int humedad;
+} Planta;
+//generamos la estructura para el array y el numero d eplantas
+typedef struct {
+    Planta plantas[MAX_PLANTAS];
+    int numPlantas;
+} Huerta;
+
+//funciones
+void initHuerta(Huerta *huerta);
+void agregarPlanta(Huerta *huerta);
+void regarPlanta(Huerta *huerta);
